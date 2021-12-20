@@ -1,15 +1,14 @@
 const express = require('express')
-const breads = express.Router()
+const breadsRouter = express.Router()
+const breadsModel = require('../models/bread.js')
 
-const Bread = require('../models/bread.js')
-
-breads.get('/', (req, res) => {
-    res.json(Bread)
+breadsRouter.get('/', (req, res) => {
+    res.json(breadsModel)
 })
 
 // INDEX
-breads.get('/', (req, res) => {
-    res.render('index')
-    // res.send(Bread)
+breadsRouter.get('/index', (req, res) => {
+    res.render('index', { name: "milca" })
 })
-module.exports = breads
+
+module.exports = breadsRouter
