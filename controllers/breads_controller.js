@@ -7,7 +7,9 @@ breads.get('/', (req, res) => {
     res.json(Bread)
 })
 
-breads.get('/:arrayIndex', (req, res) => {
-    res.send(Bread[req.params.arrayIndex])
+// INDEX
+breads.get('/', (req, res) => {
+    res.render('index')
+    // res.send(Bread)
 })
 module.exports = breads
