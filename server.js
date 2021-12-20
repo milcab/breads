@@ -1,17 +1,20 @@
+require('dotenv').config()
+
+const express = require('express')
+const app = express()
+
 // MIDDLEWARE
 app.set('views', __dirname + '/views')
 app.set('view engine', 'jsx')
 app.engine('jsx', require('express-react-views').createEngine())
 
-const express = require('express')
-require('dotenv').config()
-const PORT = process.env.PORT
-const app = express()
 app.get('/', (req, res) => {
     res.send('Welcome to Awesome App about Breads!')
 })
-const breadsController = require('.//controllers/breads_controller.js')
-app.use('/breads', breadsController)
+app.use('/breads', require('./controllers/breads_controller.js'))
+
+const PORT = process.env.PORT || 3000
+
 app.listen(PORT, () => {
     console.log('nomming at port', PORT);
 })
